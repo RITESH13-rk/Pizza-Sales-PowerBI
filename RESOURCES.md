@@ -1,21 +1,3 @@
-# Dashboard Assets and Resources
-
-This section provides access to the custom images and icons used within the Power BI dashboard for consistency and reference.
-
-## Custom Icons and Imagery
-
-All icons and image assets used in the visualization can be downloaded for review or reuse from the following secure, shared resource:
-
-[]
-
-*Note: All images are provided solely for viewing and reference related to this project.*
-
-# Project Resources and Assets
-
-This document provides access to all external files, data, and custom assets used in the development of the Pizza Sales Power BI Dashboard. This ensures transparency and allows for easy review or replication of the project.
-
----
-
 ## 1. Primary Data Source
 
 The core of this analysis relies on the raw transactional data.
