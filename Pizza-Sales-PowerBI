@@ -1,7 +1,7 @@
 Pizza-Sales-PowerBI/
 │
 ├── Dataset/
-│   └── pizza_sales_data.csv
+│   pizza_sales_data.csv
 │
 ├── Dashboard/
 │   └── Pizza_Sales_Dashboard.pbix
@@ -11,4 +11,5 @@ Pizza-Sales-PowerBI/
 │   ├── best_sellers.png
 │   └── worst_sellers.png
 │
-├── README.md
+├── Dataset/
+    └── RESOURCES.md
