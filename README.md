@@ -24,7 +24,16 @@ This project analyzes pizza sales data to understand revenue trends, customer be
 ## 📁 Project Structure
 - Dataset: Raw pizza sales data
 - Dashboard: Power BI (.pbix) file
-- Images: Dashboard screenshots
+- Images: 
+                                                                        1
+                                                                  
+<img width="1302" height="706" alt="Pizza Sales 1pg" src="https://github.com/user-attachments/assets/8f6a93dd-acc2-4023-9fa3-f3aeed3ae524" />
+
+- Images:              2
+ 
+<img width="1298" height="706" alt="Pizza Sales 2pg" src="https://github.com/user-attachments/assets/a5453fab-3727-493f-90c5-53d54d8baac1" />
+
+
 
 ## 👤 Author
 Ritesh Koushal
