@@ -219,12 +219,42 @@ These queries helped extract business insights directly from the transactional d
         GROUP BY pizza_name
         ORDER BY Total_Orders ASC;
 
+## 🔍 Key Insights
+  
+- **Friday & Saturday evenings are peak sales times**, indicating promotional focus for weekends.
+- **Large pizzas generate the most revenue**, followed by medium and small sizes.
+- **Thai Chicken Pizza** contributes the highest total sales, suggesting high margin/appeal.
+
+---
+
+## 📊 Business Impact
+
+**This analysis highlights key sales drivers and operational insights that can inform marketing campaigns, inventory planning, and peak hour staffing decisions.**
+
+---
+
 ## 📁 Project Structure
-- **Dataset**: Raw pizza sales data  
-- **Dashboard**: Power BI `.pbix` file  
-- **Images**: Dashboard screenshots  
+
+        Pizza-Sales/
+        ├── Data/
+        │   └── pizza_sales.csv
+        ├── SQL/
+        │   └── pizza_sales_queries.sql
+        ├── Screenshots/
+        │   └── Dashboard_Overview.png
+        ├── README.md
+        └── RESOURCES.md
+
+## 🚀 How to Use
+
+1. Clone or download the repository  
+2. Open pizza sales dataset in Power BI  
+3. Use slicers for Date, Category, and Size to explore sales trends  
+4. Refer to SQL queries in RESOURCES.md for backend analysis
 
 ---
 
 ## 👤 Author
 **Ritesh Koushal**
+
+Aspiring Data Analyst | Power BI | Data Visualization
