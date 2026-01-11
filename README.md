@@ -62,6 +62,163 @@ The dashboard is designed with multiple pages to provide both high-level busines
 
 ---
 
+## 🧮 SQL Equivalent
+The following SQL queries were used to perform KPI calculations and trend analysis for the Pizza Sales Dashboard.
+These queries helped extract business insights directly from the transactional dataset.
+
+### A. Key Performance Indicators (KPIs)**
+
+- **Total Revenue**
+
+      SELECT SUM(total_price) AS Total_Revenue
+      FROM pizza_sales;
+
+- **Average Order Value**
+
+       SELECT
+          SUM(total_price) / COUNT(DISTINCT order_id) AS Average_Order_Value
+       FROM pizza_sales;
+
+- **Total Pizzas Sold**
+
+       SELECT SUM(quantity) AS Total_Pizzas_Sold
+       FROM pizza_sales;
+
+- **Total Orders**
+
+       SELECT COUNT(DISTINCT order_id) AS Total_Orders
+        FROM pizza_sales;
+
+- **Average Pizzas per Order**
+
+            SELECT
+         CAST(
+            CAST(SUM(quantity) AS DECIMAL(10,2)) /
+            CAST(COUNT(DISTINCT order_id) AS DECIMAL(10,2))
+        AS DECIMAL(10,2)) AS Average_Pizzas_Per_Order
+        FROM pizza_sales;
+
+  ## B. Daily Trend for Total Orders
+
+        SELECT
+            DATENAME(WEEKDAY, order_date) AS Order_Day,
+            COUNT(DISTINCT order_id) AS Total_Orders
+        FROM pizza_sales
+        GROUP BY DATENAME(WEEKDAY, order_date);
+
+  ## C. Monthly Trend for Orders
+
+        SELECT
+            DATENAME(MONTH, order_date) AS Month_Name,
+            COUNT(DISTINCT order_id) AS Total_Orders
+        FROM pizza_sales
+        GROUP BY DATENAME(MONTH, order_date)
+        ORDER BY Total_Orders DESC;
+
+  ## D. Percentage of Sales by Pizza Category
+
+        SELECT
+            pizza_category,
+            SUM(total_price) AS Total_Sales,
+            SUM(total_price) * 100 /
+                (SELECT SUM(total_price)
+                FROM pizza_sales
+                WHERE MONTH(order_date) = 1) AS Sales_Percentage
+        FROM pizza_sales
+        WHERE MONTH(order_date) = 1
+        GROUP BY pizza_category;
+
+  ## E. Percentage of Sales by Pizza Size
+
+        SELECT
+            pizza_size,
+            CAST(SUM(total_price) AS DECIMAL(10,2)) AS Total_Sales,
+            CAST(
+                SUM(total_price) * 100 /
+                (SELECT SUM(total_price)
+                 FROM pizza_sales
+                 WHERE DATEPART(QUARTER, order_date) = 1)
+            AS DECIMAL(10,2)) AS Sales_Percentage
+        FROM pizza_sales
+        WHERE DATEPART(QUARTER, order_date) = 1
+        GROUP BY pizza_size
+        ORDER BY Sales_Percentage DESC;
+
+  ## F. Total Pizzas Sold by Category
+
+        SELECT
+            pizza_category,
+            SUM(quantity) AS Total_Quantity_Sold
+        FROM pizza_sales
+        WHERE MONTH(order_date) = 2
+        GROUP BY pizza_category
+        ORDER BY Total_Quantity_Sold DESC;
+
+## G. Top & Bottom Performing Pizzas
+
+- **Top 5 Pizzas by Revenue**
+
+        SELECT TOP 5
+            pizza_name,
+            CAST(SUM(total_price) AS DECIMAL(10,2)) AS Total_Revenue
+        FROM pizza_sales
+        GROUP BY pizza_name
+        ORDER BY Total_Revenue DESC;
+
+- **Top 5 Pizzas by Revenue**
+
+        SELECT TOP 5
+            pizza_name,
+            CAST(SUM(total_price) AS DECIMAL(10,2)) AS Total_Revenue
+        FROM pizza_sales
+        GROUP BY pizza_name
+        ORDER BY Total_Revenue DESC;
+
+- **Top 5 Pizzas by Quantity Sold**
+
+        SELECT TOP 5
+            pizza_name,
+            SUM(quantity) AS Total_Pizzas_Sold
+        FROM pizza_sales
+        GROUP BY pizza_name
+        ORDER BY Total_Pizzas_Sold DESC;
+
+- **Top 5 Pizzas by Quantity Sold**
+
+        SELECT TOP 5
+            pizza_name,
+            SUM(quantity) AS Total_Pizzas_Sold
+        FROM pizza_sales
+        GROUP BY pizza_name
+        ORDER BY Total_Pizzas_Sold DESC;
+
+- **Bottom 5 Pizzas by Quantity Sold**
+
+        SELECT TOP 5
+            pizza_name,
+            SUM(quantity) AS Total_Pizzas_Sold
+        FROM pizza_sales
+        GROUP BY pizza_name
+        ORDER BY Total_Pizzas_Sold ASC;
+
+- **Top 5 Pizzas by Total Orders**
+
+        SELECT TOP 5
+            pizza_name,
+            COUNT(DISTINCT order_id) AS Total_Orders
+        FROM pizza_sales
+        GROUP BY pizza_name
+        ORDER BY Total_Orders DESC;
+
+- **Bottom 5 Pizzas by Total Orders**
+
+        SELECT TOP 5
+            pizza_name,
+            COUNT(DISTINCT order_id) AS Total_Orders
+        FROM pizza_sales
+        GROUP BY pizza_name
+        ORDER BY Total_Orders ASC;
+
 ## 📁 Project Structure
 - **Dataset**: Raw pizza sales data  
 - **Dashboard**: Power BI `.pbix` file  
